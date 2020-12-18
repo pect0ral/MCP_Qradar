@@ -27,7 +27,6 @@
 ## During conversion, they will live in the "tmp" directory
 ## Afterwards, they will be moved to the "out" directory for fetching from Qradar
 
-h
 _WD="/home/mcafee"
 ## Script Path
 _BIN="${_WD}/bin"
