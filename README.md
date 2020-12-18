@@ -16,25 +16,25 @@ The conversion makes them a valid log stream that, on the Qradar Side, can be in
 
 ## Architecture
 
-The scripts, as-is, assume you have a linux host with a local user, mcafee who lives in /home/mcafee.
+The scripts, as-is, assume you have a linux host with a local user, mcafee who lives in `/home/mcafee`.
 This linux host and user act as a middle man between McAfee CSR and Qradar. That user's home directory should contain 4 additional subdirectories,
-"in", "out" and "tmp".
+`in`, `out` and `tmp`.
 
-*Incoming files go into "in"
-*Outgoing files go into "out"
-*Files being converted go into "tmp"
-*Our scripts go into a directory named "bin"
-
-
-The Windows CSR Server will need to push the CSV logs into this Linux Server, targetting our "in" directory ( eg. /home/mcafee/in ) listed above.
-You can use Posh-SSH for this, See: https://www.powershellgallery.com/packages/Posh-SSH/2.1
-
-A cron on the linux server for every 15 minutes should be configured to run the shell script contained here from the user's "bin" directory (eg. /home/mcafee/bin/ )
-
-All files that are being converted will temporarily be put into the "tmp" directory while the conversion is happening, and the finalized converted file will be moved to the "out" directory.
+- Incoming files go into `in`
+- Outgoing files go into `out`
+- Files being converted go into `tmp`
+- Our scripts go into a directory named `bin`
 
 
-On the Qradar Side, setup a log source using the McAfee Web Gateway DSM, with SFTP File Protocol and point it to your /home/mcafee/out directory looking for "*\.log"
+The Windows CSR Server will need to push the CSV logs into this Linux Server, targetting our `in` directory ( eg. `/home/mcafee/in` ) listed above.
+You can use `Posh-SSH` for this, See: https://www.powershellgallery.com/packages/Posh-SSH/2.1
+
+A cron on the linux server for every 15 minutes should be configured to run the shell script contained here from the user's `bin` directory (eg. `/home/mcafee/bin/` )
+
+All files that are being converted will temporarily be put into the `tmp` directory while the conversion is happening, and the finalized converted file will be moved to the `out` directory.
+
+
+On the Qradar Side, setup a log source using the McAfee Web Gateway DSM, with SFTP File Protocol and point it to your `/home/mcafee/out` directory looking for `*\.log`
 
 # Testing
 
